@@ -3,10 +3,9 @@
     // license found at http://www.site.uottawa.ca/school/research/lloseng/
 
     /**
-     * This class contains instances of coordinates in either polar or
-     * cartesian format.  It also provides the utilities to convert
-     * them into the other type. It is not an optimal design, it is used
-     * only to illustrate some design issues.
+     * This class contains instances of coordinates in polar format.  
+     * It also provides the utilities to convert them into cartesian format.
+     * It is not an optimal design, it is used only to compare design implementations.
      *
      * @author Fran&ccedil;ois B&eacute;langer
      * @author Dr Timothy C. Lethbridge
@@ -30,7 +29,7 @@ public class PointCP2
     //Constructors ******************************************************
 
     /**
-     * Constructs a coordinate object, with a type identifier.
+     * Constructs a coordinate object.
      */
     public PointCP2(double rho, double theta)
     {
