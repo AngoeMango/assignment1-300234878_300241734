@@ -1,4 +1,7 @@
-    // This file contains material supporting section 2.9 of the textbook:
+package design3;
+
+import design5.PointCP5;
+	// This file contains material supporting section 2.9 of the textbook:
     // "Object Oriented Software Engineering" and is issued under the open-source
     // license found at http://www.site.uottawa.ca/school/research/lloseng/
 
@@ -11,7 +14,7 @@
      * @author Dr Timothy C. Lethbridge
      * @version July 2000
      */
-public class PointCP3
+public class PointCP3 extends PointCP5
     {
     //Instance variables ************************************************
     
@@ -61,42 +64,16 @@ public class PointCP3
         return Math.toDegrees(Math.atan2(y, x));
     }
     
-
     /**
-     * Calculates the distance in between two points using the Pythagorean
-     * theorem  (C ^ 2 = A ^ 2 + B ^ 2). Not needed until E2.30.
+     * Factory method (used to create a new point so that 
+     * rotatePoint can be implemented concretely in the superclass).
      *
-     * @param pointA The first point.
-     * @param pointB The second point.
-     * @return The distance between the two points.
+     * @param value1 The value of x.
+     * @param value2 The value of y.
+     * @return The point characterized by the two values.
      */
-    public double getDistance(PointCP3 pointB)
-    {
-        // Obtain differences in X and Y, sign is not important as these values
-        // will be squared later.
-        double deltaX = getX() - pointB.getX();
-        double deltaY = getY() - pointB.getY();
-        
-        return Math.sqrt((Math.pow(deltaX, 2) + Math.pow(deltaY, 2)));
-    }
-
-    /**
-     * Rotates the specified point by the specified number of degrees.
-     * Not required until E2.30
-     *
-     * @param point The point to rotate
-     * @param rotation The number of degrees to rotate the point.
-     * @return The rotated image of the original point.
-     */
-    public PointCP3 rotatePoint(double rotation)
-    {
-        double radRotation = Math.toRadians(rotation);
-        double X = getX();
-        double Y = getY();
-            
-        return new PointCP3(
-        (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
-        (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
+    public PointCP5 newPt(double value1, double value2) {
+    	return new PointCP3(value1, value2);
     }
 
     /**
