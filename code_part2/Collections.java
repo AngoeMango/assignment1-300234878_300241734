@@ -5,12 +5,26 @@ import java.util.Vector;
 public class Collections {
     
     public static void main(String[] args) {
-        ArrayList<Integer> myNumbers1 = ArrayListFiller(10000);
-        System.out.println(myNumbers1);
-        Vector<Integer> myNumbers2 = VectorArrayFiller(10000);
-        System.out.println(myNumbers2);
-        int[] myNumbers3 = OrdinaryArrayFiller(10000);
-        System.out.println(myNumbers3);
+        int number = 90000000;
+
+        long StartTimeArrayList = System.currentTimeMillis();
+        ArrayList<Integer> myNumbers1 = ArrayListFiller(number);
+        System.out.println(ArrayListSummation(myNumbers1));
+        long SumArrayList = System.currentTimeMillis() - StartTimeArrayList;
+
+        long StartTimeVectorArray = System.currentTimeMillis();
+        Vector<Integer> myNumbers2 = VectorArrayFiller(number);
+        System.out.println(VectorArraySummation(myNumbers2));
+        long SumVectorArray = System.currentTimeMillis() - StartTimeVectorArray;
+
+        long StartTimeOrdinaryArray = System.currentTimeMillis();
+        int[] myNumbers3 = OrdinaryArrayFiller(number);
+        System.out.println(OrdinaryArraySummation(myNumbers3));
+        long SumOrdinaryArray = System.currentTimeMillis() - StartTimeOrdinaryArray;
+
+        System.out.println("Time to process ArrayList: " + SumArrayList);
+        System.out.println("Time to process VectorArray: " + SumVectorArray);
+        System.out.println("Time to process OrdinaryArray: " + SumOrdinaryArray);
     }
 
     public static ArrayList<Integer> ArrayListFiller (int size){
@@ -25,8 +39,17 @@ public class Collections {
         return ArrayListCollection;
     }
 
+    public static int ArrayListSummation (ArrayList<Integer> ArrayListCollection){
+        int size = ArrayListCollection.size();
+        int sum = 0;
+        for (int i = 0; i < size; i++){
+            sum += ArrayListCollection.get(i);
+        }
+        return sum;
+    }
+
     public static Vector<Integer> VectorArrayFiller (int size){
-        Vector<Integer> VectorArrayCollection = new Vector<>();
+        Vector<Integer> VectorArrayCollection = new Vector<>(size);
 
         Random rand = new Random();
 
@@ -35,6 +58,17 @@ public class Collections {
         }
 
         return VectorArrayCollection;
+    }
+
+    public static int VectorArraySummation (Vector<Integer> VectorArrayCollection){
+        int size = VectorArrayCollection.size();
+        int sum = 0;
+
+        for (int i = 0; i < size; i++){
+            sum += VectorArrayCollection.get(i);
+        }
+        
+        return sum;
     }
 
     public static int[] OrdinaryArrayFiller (int size){
@@ -47,6 +81,17 @@ public class Collections {
         }
 
         return OrdinaryArray;
+    }
+
+    public static int OrdinaryArraySummation (int[] OrdinaryArray){
+        int size = OrdinaryArray.length;
+        int sum = 0;
+
+        for (int i = 0; i < size; i++){
+            sum += OrdinaryArray[i];
+        }
+
+        return sum;
     }
 
 }
