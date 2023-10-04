@@ -3,6 +3,7 @@ package design3;
 	// "Object Oriented Software Engineering" and is issued under the open-source
 	// license found at http://www.site.uottawa.ca/school/research/lloseng/
 
+import design2.PointCP2;
 import java.io.*;
 
 	/**
@@ -64,11 +65,15 @@ public class PointCPTest
 			return;
 		}
 		}
-		System.out.println("\nYou entered:\n" + point);
-		//point.convertStorageToCartesian();
-		System.out.println("\nAfter asking to store as Cartesian:\n" + point);
-		point.convertStorageToPolar();
-		System.out.println("\nAfter asking to store as Polar:\n" + point);
+		System.out.println("\nYou entered (Cartesian):\n" + point);
+		PointCP2 point2 = point.convertStorageToPolar();
+		System.out.println("\nAfter asking to store as Polar:\n" + point2);
+		
+		System.out.println("\nAfter rotating the point by 45 degrees:\n" + point.rotatePoint(45));
+		System.out.println("\nAfter rotating the point by 10 degrees:\n" + point.rotatePoint(10));
+		System.out.println("\nGetting the distance to point (1,3):\n" + point.getDistance(new PointCP3(1,3)));
+		System.out.println("\nGetting the distance to point (10,10):\n" + point.getDistance(new PointCP3(10,10)));
+		
 	}
 
 	/**

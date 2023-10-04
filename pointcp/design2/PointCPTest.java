@@ -5,6 +5,8 @@ package design2;
 
 import java.io.*;
 
+import design3.PointCP3;
+
 	/**
 	 * This class prompts the user for a set of coordinates, and then 
 	 * converts them from polar to cartesian or vice-versa.
@@ -64,11 +66,14 @@ public class PointCPTest
 			return;
 		}
 		}
-		System.out.println("\nYou entered:\n" + point);
-		point.convertStorageToCartesian();
-		System.out.println("\nAfter asking to store as Cartesian:\n" + point);
-		//point.convertStorageToPolar();
-		System.out.println("\nAfter asking to store as Polar:\n" + point);
+		System.out.println("\nYou entered (Polar):\n" + point);
+		PointCP3 point3 = point.convertStorageToCartesian();
+		System.out.println("\nAfter asking to store as Cartesian:\n" + point3);
+		
+		System.out.println("\nAfter rotating the point by 45 degrees:\n" + point.rotatePoint(45));
+		System.out.println("\nAfter rotating the point by 10 degrees:\n" + point.rotatePoint(10));
+		System.out.println("\nGetting the distance to point (10,45):\n" + point.getDistance(new PointCP2(10,45)));
+		System.out.println("\nGetting the distance to point (13,10):\n" + point.getDistance(new PointCP2(13,10)));
 	}
 
 	/**

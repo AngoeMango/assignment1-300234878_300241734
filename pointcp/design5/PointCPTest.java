@@ -4,7 +4,6 @@ package design5;
 	// license found at http://www.site.uottawa.ca/school/research/lloseng/
 
 import java.io.*;
-import design5.PointCP5;
 
 	/**
 	 * This class prompts the user for a set of coordinates, and then 
@@ -42,18 +41,8 @@ public class PointCPTest
 		// Check if the user input coordinates from the command line
 		// If he did, create the PointCP object from these arguments.
 		// If he did not, prompt the user for them.
-		try
-		{
-		point = new PointCP2(
-			Double.valueOf(args[0]).doubleValue(), 
-			Double.valueOf(args[1]).doubleValue());
-		}
-		catch(Exception e)
-		{
-		// If we arrive here, it is because either there were no
-		// command line arguments, or they were invalid
 		if(args.length != 0)
-			System.out.println("Invalid arguments on command line");
+		      System.out.println("Invalid arguments on command line");
 
 		try
 		{
@@ -64,12 +53,11 @@ public class PointCPTest
 			System.out.println("Error getting input. Ending program.");
 			return;
 		}
-		}
 		System.out.println("\nYou entered:\n" + point);
-		//point.convertStorageToCartesian();
-		System.out.println("\nAfter asking to store as Cartesian:\n" + point);
-		//point.convertStorageToPolar();
-		System.out.println("\nAfter asking to store as Polar:\n" + point);
+		
+		System.out.println("\nAfter rotating the point by 45 degrees:\n" + point.rotatePoint(45));
+		System.out.println("\nAfter rotating the point by 10 degrees:\n" + point.rotatePoint(10));
+		System.out.println("\nGetting the distance to itself:\n" + point.getDistance(point));		
 	}
 
 	/**
@@ -160,6 +148,9 @@ public class PointCPTest
 		isOK = false;
 		}
 		//Return a new PointCP object
-		return (new PointCP2(a, b));
+		if (coordType == 'C')
+			return (new PointCP3(a, b));
+		else
+			return (new PointCP2(a, b));
 	}
 }
